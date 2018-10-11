@@ -1,0 +1,74 @@
+<div class="col-sm-12" ng-show="!dataArrived">
+    <div class="container">
+        <div ng-show="myData.length > 0" class="grid table-responsive table" ui-grid="gridOptions">
+        </div>
+        <div class="loader" ng-show="loading">
+            <img src="includes/images/ajax-loader.gif" class="load_img" id="loading" alt="loading" />
+        </div>
+
+        <div ng-show="myData.length==0">
+            <p>No courses were found with that term, please try your search again</p>
+        </div>
+    </div>
+</div>
+<div ng-show="dataArrived">
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Course Number: {{currCourse.Course}}</p>
+            <h1>{{currCourse.Title}}</h1>
+            <p>Course level: {{currCourse.Career}}</p>
+            <p>Term: {{currCourse.Term}}</p>
+            <p>Dates: {{currCourse.Start_Date}} - {{currCourse.End_Date}}</p>
+            <p>Times: {{currCourse.Start_Time}} - {{currCourse.End_Time}}</p>
+            <p>Instructor: {{currCourse.Instructor}} <span ui-if="false">- {{currCourse.Email}}</span></p>
+            <p>Location: {{currCourse.Location}}</p>
+            <p daysofweek days="{{currCourse.Days}}"></p>
+            <p>{{currCourse.Description}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+          	<div class="hr"><hr /></div>
+            <h4>Would you like to take this course?</h4>
+        </div>
+        <div class="col-sm-6">
+            <p>If you haven't already been admitted, apply today.</p>
+           <p style="margin: 20px 0px 20px 0px;"> <a href="https://uakron.edu/apply" class="btn btn-default linkButton">Apply now</a><!--http://www.uakron.edu/admissions/undergraduate/who-are-you/index.dot--></p>
+        </div>
+        <div class="col-sm-6">
+           <p>If you have already been admitted, log in to My Akron and visit the Student Center to sign up for the class.</p>
+            <p style="margin: 20px 0px 20px 0px;"> <a href="https://my.uakron.edu/" class="btn btn-default linkButton">Go to My Akron</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 shareIt">
+        	<div class="hr"><hr /></div>
+            <p>Share this class information with someone else.</p>
+            <!--<button id="sendemail" data-id="{{ currCourse.Id }}" class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span> email</button>-->
+                <p><a id="sendemail" data-customid="{{ courseId }}" href="http://www.uakron.edu/academics_majors/class-search/#/course-detail/{{courseId}}" class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span> email</a></p>
+            <script type="text/javascript">
+                jQuery(document).ready(function(){
+                    jQuery("#sendemail").on('click', function(event){
+                        event.preventDefault();
+                        var thisId = $(this).data('customid');
+                        var formattedBody = "Look at this upcoming class I'm interested in: \n http://www.uakron.edu/academics_majors/class-search/#/course-detail/"+thisId;
+                        var subjectLine = "UA class";
+                        var mailToLink = "mailto:?subject=" + encodeURIComponent(subjectLine) + "&body=" + encodeURIComponent(formattedBody);
+                        window.location.href = mailToLink;
+                    });
+                })
+
+            </script>
+        </div>
+    </div>
+</div>
+  <div class="row">
+      <div class="return col-sm-12">
+          <hr />
+           <p style="margin: 20px 0px 20px 0px;">
+              <a href="javascript:history.go(-1);" class="btn btn-default"><span class="glyphicon glyphicon-menu-left"></span> Return to list</a>
+        </p>
+          	<div class="hr"><hr /></div>
+      </div>
+  </div>

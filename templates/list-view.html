@@ -1,0 +1,91 @@
+<div class="row form-elements">
+            <div class="col-sm-4">
+                <fieldset>
+                    <legend style="font-weight:800;">Course level</legend>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default" ng-class="{true: 'active'}[career.value == 'undergraduate']" ng-model='career.value' ng-click='newCareerValue("undergraduate")'>
+                            <input class="btn btn-default" type="radio" name="level" id="ug" value="Undergraduate" ng-model='career.value' ng-change='newCareerValue(career.value)'>
+                            Undergraduate
+                        </label>
+
+                        <label class="btn btn-default" ng-class="{true: 'active'}[career.value == 'graduate']" ng-click='newCareerValue("graduate")'>
+                            <input type="radio" name="level" id="grad" value="Graduate" ng-model='career.value' ng-change='newCareerValue("career.value)'>
+                            Graduate
+                        </label>
+
+                        <label class="btn btn-default" ng-class="{true: 'active'}[career.value == 'law']" ng-click='newCareerValue("law")'>
+                            <input type="radio" name="level" id="law" value="Law" ng-model='career.value' ng-change='newCareerValue("career.value")'>
+                            Law
+                        </label>
+
+                        <label class="btn btn-default" ng-class="{true: 'active'}[career.value == 'all']" ng-click='newCareerValue("all")'>
+                            <input type="radio" name="level" id="all" value="" ng-model='career.value' ng-change='newCareerValue(career.value)'>
+                            All
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-sm-4">
+                <fieldset data-role="controlgroup" data-type="horizontal" >
+                    <legend style="font-weight:800;">Term</legend>
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default" ng-class="{true: 'active'}[term.value == 'fall']"  ng-click='newTermValue("fall")'>
+                                <input type="radio" name="semester" id="ug" value="Fall" ng-model='term.value' ng-change='newTermValue("fall")'/>
+                                Fall
+                            </label>
+
+                            <label  class="btn btn-default" ng-class="{true: 'active'}[term.value == 'spring']"  ng-click='newTermValue("spring")'>
+                                <input type="radio" name="semester" id="grad" value="Spring" ng-model='term.value' ng-change='newTermValue("spring")'/>
+                                Spring
+                            </label>
+
+                            <label  class="btn btn-default" ng-class="{true: 'active'}[term.value == 'summer']" ng-click='newTermValue("summer")'>
+                                <input type="radio" name="semester" id="law" value="Summer" ng-model='term.value' ng-change='newTermValue("summer")'/>
+                                Summer
+                            </label>
+
+                            <label  class="btn btn-default" ng-class="{true: 'active'}[term.value == 'all']" ng-click='newTermValue("all")'>
+                                <input type="radio" name="semester" id="all" value="" ng-model='term.value' ng-change='newTermValue("all")'/>
+                                All
+                            </label>
+                        </div>
+                </fieldset>
+            </div>
+            <div class="col-sm-4">
+                <fieldset data-role="controlgroup" data-type="horizontal" >
+                    <legend style="font-weight:800;">Instruction Mode</legend>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label for="mode_traditional" class="btn btn-default" ng-class="{true: 'active'}[mode.value == 'traditional']" ng-model="mode.value" ng-click="newModeValue('traditional')">
+                            <input type="radio" name="mode" id="mode_traditional" value="traditional" ng-model='mode.value' ng-change='newModeValue(mode.value)'/>
+                            Traditional
+                        </label>
+
+                        <label for="mode_online" class="btn btn-default" ng-class="{true: 'active'}[mode.value == 'online']"  ng-model="mode.value" ng-click="newModeValue('online')">
+                            <input type="radio" name="mode" id="mode_online" value="online" ng-model='mode.value' ng-change='newModeValue(mode.value)'/>
+                            Online
+                        </label>
+
+                        <label for="mode_all" class="btn btn-default" ng-class="{true: 'active'}[mode.value == 'all']"  ng-model="mode.value" ng-click="newModeValue('all')">
+                            <input type="radio" name="mode"  id="mode_all" value="all" ng-model='mode.value' ng-change='newModeValue(mode.value)'/>
+                            All
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+    </div><!-end row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-danger" ng-show="datarows == false;">
+                <p>{{termMessage}}</p>
+            </div>
+
+            <div ng-show="datarows && !loading" class="grid table-responsive table" ui-grid="gridOptions" ui-grid-save-state>
+            </div>
+            <div class="loader" ng-show="loading">
+                <img src="includes/images/ajax-loader.gif" class="load_img" id="loading" alt="loading" />
+            </div>
+            <button id="restore" type="button" class="btn btn-success" ng-click="resetState()">Reset Filters</button>
+        </div>
+
+    </div>
+    </div>

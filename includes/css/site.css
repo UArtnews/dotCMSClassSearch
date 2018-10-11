@@ -1,0 +1,25 @@
+fieldset {
+    margin-bottom: 12px;
+}
+.grid {
+    height: auto;
+    width: 1100px;
+    overflow:hidden;
+}
+.ui-grid-footer-info span {
+    height: 30px;
+    line-height: 28px;
+    padding-left: 0.5em;
+}
+.ui-grid-render-container-body .ui-grid-viewport {
+    overflow-x: hidden !important;
+    width:100% !important;
+    overflow-anchor: none;
+}
+div.loader {
+    text-align: center;
+    padding: 2em;
+}
+.form-elements legend {
+    font-size: 16px;
+}
